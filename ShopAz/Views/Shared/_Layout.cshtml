@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @RenderSection("Css", false)
+    <link href="~/lib/font-awesome/css/all.css" rel="stylesheet" />
+    <link href="~/lib/font-awesome/css/brands.css" rel="stylesheet" />
+    <link href="~/lib/font-awesome/css/fontawesome.css" rel="stylesheet" />
+    <link href="~/lib/font-awesome/css/regular.css" rel="stylesheet" />
+    <link href="~/lib/font-awesome/css/solid.css" rel="stylesheet" />
+    <link href="~/lib/font-awesome/css/svg-with-js.css" rel="stylesheet" />
+    <link href="~/lib/font-awesome/css/v4-shims.css" rel="stylesheet" />
+    <link href="~/twitter-bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/twitter-bootstrap/css/bootstrap-grid.css" rel="stylesheet" />
+    <link href="~/twitter-bootstrap/css/bootstrap-reboot.css" rel="stylesheet" />
+
+    <title>Shopapp</title>
+</head>
+<body>
+
+    @await Html.PartialAsync("_navbar")
+
+    <main class="my-3">
+        <div class="container">
+
+            @if (TempData["message"] != null)
+            {
+                <partial name="_ResultMessage" model="@(TempData.Get<AlertMessage>("message"))" />
+            }
+
+            @RenderBody()
+        </div>
+    </main>
+
+    <footer class="py-5 bg-dark text-white text-center" >
+        Shop.az
+    </footer>
+        <script src="~/twitter-bootstrap/js/bootstrap.js"></script>
+        <script src="~/jquery/jquery.min.js"></script>
+    @RenderSection("Scripts", false)
+</body>
+</html>
